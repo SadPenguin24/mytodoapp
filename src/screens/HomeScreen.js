@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { lists } from "../actions/listActions";
+import { lists, addList} from "../actions/listActions";
 
 import ListName from "../components/ListName";
 
@@ -15,6 +15,7 @@ function createEntry(listTerm) {
 }
 
 function HomeScreen() {
+  const [listName, setListName] = useState("");
   const dispatch = useDispatch();
 
   const allList = useSelector((state) => state.allList);
@@ -24,6 +25,10 @@ function HomeScreen() {
     dispatch(lists());
   }, [dispatch]);
 
+  const addListHandler = (e) => {
+    e.preventDefault();
+    dispatch(addList(listName));
+  };
   console.log(list);
 
   return (
@@ -40,11 +45,11 @@ function HomeScreen() {
       <form>
         <input
           type="text"
-          id="listName"
-          name="listName"
           placeholder="Add List"
+          value={listName}
+          onChange={(e) => setListName(e.target.value)}
         />
-        <button>Add</button>
+        <button onClick={addListHandler}>Add</button>
         <hr />
       </form>
     </div>

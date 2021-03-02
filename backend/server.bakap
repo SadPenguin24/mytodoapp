@@ -38,43 +38,6 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-//routes for list
-
-app.post("/lists/add", (req, res) => {
-  const listName = req.body.listName;
-
-  const newList = new List({
-    listName,
-    items: [],
-  });
-
-  newList
-    .save()
-    .then(() => res.json("List added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
-app.delete("/lists/:listid", (req, res) => {
-  const listId = req.params.listid;
-  List.findByIdAndDelete(listId)
-    .then(() => res.json("List deleted."))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
-app.get("/lists/:listid", function (req, res) {
-  const listId = req.params.listid;
-  console.log(listId);
-
-  List.findById(listId)
-    .then((userFound) => {
-      if (!userFound) {
-        return res.status(404).end();
-      }
-      return res.status(200).json(userFound);
-    })
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
 //routes to handle star function
 app.post("/lists/:listid/star", function (req, res) {
   const listId = req.params.listid;
@@ -102,33 +65,6 @@ app.post("/lists/:listid/unstar", function (req, res) {
         .save()
         .then(() => res.json("unStarred"))
         .catch((err) => res.status(400).json("Error: " + err));
-    })
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
-//routes for tasks
-app.get("/lists/:listid/items/", (req, res) => {
-  const listId = req.params.listid;
-  console.log(listId);
-
-  List.findById(listId)
-    .then((list) => res.json(list.items))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
-app.post("/lists/:listid/items/add", (req, res) => {
-  const listId = req.params.listid;
-  const itemName = req.body.itemName;
-
-  List.findById(listId)
-    .then((list) => {
-      const newItem = new Item({
-        itemName,
-      });
-
-      list.items.push(newItem);
-      list.save();
-      res.json("item added!");
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
