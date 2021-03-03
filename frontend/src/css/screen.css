@@ -3,6 +3,11 @@ h1 {
   margin-bottom: 25px;
 }
 
+.backIcon {
+  position: absolute;
+  right: 83%;
+}
+
 .inputContainer {
   padding-top: 25px;
 }

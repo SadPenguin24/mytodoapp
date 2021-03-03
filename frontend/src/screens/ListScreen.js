@@ -1,5 +1,6 @@
 import "../css/screen.css";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listById } from "../actions/listActions";
 import { getTask, addTask } from "../actions/taskActions";
@@ -32,7 +33,12 @@ function ListScreen({ match }) {
 
   return (
     <div>
-      <h1>{listOne.listName}</h1>
+      <h1>
+        <Link className="backIcon" to="/" style={{ textDecoration: "none" }}>
+          <span class="far fa-arrow-alt-circle-left"></span>
+        </Link>
+        {listOne.listName}
+      </h1>
       {loading ? (
         <span>loading</span>
       ) : error ? (
