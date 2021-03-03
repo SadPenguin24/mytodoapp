@@ -1,3 +1,4 @@
+import "../css/screen.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listById } from "../actions/listActions";
@@ -17,7 +18,7 @@ function ListScreen({ match }) {
   const { loading, error, listOne } = listDetails;
 
   const listTask = useSelector((state) => state.listTask);
-  const { loadingTask, errorTask, tasks } = listTask;
+  const { tasks } = listTask;
 
   useEffect(() => {
     dispatch(listById(match.params.id));
@@ -32,23 +33,23 @@ function ListScreen({ match }) {
   return (
     <div>
       <h1>{listOne.listName}</h1>
-      <hr />
       {loading ? (
-        <h3>loading</h3>
+        <span>loading</span>
       ) : error ? (
-        <h3>{error}</h3>
+        <span>{error}</span>
       ) : (
         <span>{tasks.map(createEntry)}</span>
       )}
-      <form>
+      <form className="inputContainer">
         <input
           type="text"
-          placeholder="Add task"
+          placeholder="Add Task"
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
         />
-        <button onClick={submitHandler}>Add</button>
-        <hr />
+        <span onClick={submitHandler}>
+          <i class="fas fa-plus"></i>
+        </span>
       </form>
     </div>
   );

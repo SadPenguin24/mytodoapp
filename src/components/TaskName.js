@@ -3,7 +3,7 @@ import React from "react";
 function ListName({ taskName }) {
   return (
     <div>
-      <h3>{taskName}</h3>
+      <span>{taskName}</span>
     </div>
   );
 }

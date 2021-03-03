@@ -1,6 +1,7 @@
+import "../css/screen.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { lists, addList} from "../actions/listActions";
+import { lists, addList } from "../actions/listActions";
 
 import ListName from "../components/ListName";
 
@@ -34,7 +35,6 @@ function HomeScreen() {
   return (
     <div>
       <h1>My List</h1>
-      <hr />
       {loading ? (
         <h3>loading</h3>
       ) : error ? (
@@ -42,15 +42,16 @@ function HomeScreen() {
       ) : (
         <div>{list.map(createEntry)}</div>
       )}
-      <form>
+      <form className="inputContainer">
         <input
           type="text"
           placeholder="Add List"
           value={listName}
           onChange={(e) => setListName(e.target.value)}
         />
-        <button onClick={addListHandler}>Add</button>
-        <hr />
+        <span onClick={addListHandler}>
+          <i class="fas fa-plus"></i>
+        </span>
       </form>
     </div>
   );

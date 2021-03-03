@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.inputContainer {
+  padding-top: 25px;
+}
+
+.inputContainer input {
+  border: 0;
+  border-bottom: 3px solid #555;
+  background: transparent;
+  width: 92%;
+  padding: 8px 0 5px 0;
+  font-size: 16px;
+}
+
+.inputContainer input:focus {
+  outline: none;
+}

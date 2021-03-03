@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  padding: 0px;
+  margin: 0px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* outline: 2px dashed purple; */
+}
+
+/* Normalizers */
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+}
+
+span {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: black;
+}
+
+/* General Rules */
+
+body {
+  background-color: #f8e0e0;
+  background-image: url(/src/images/Open\ Doodles.png);
+  background-repeat: no-repeat;
+}
+
+/* Page frame */
+.frame {
+  max-width: 1440px;
+  margin: auto;
+  padding: 70px 20% 40px;
+}
+
+/* Specific Rules */
+.glass {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 50px;
+}
+
+.content {
+  padding: 10% 10%;
+}

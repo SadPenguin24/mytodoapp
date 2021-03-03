@@ -87,11 +87,11 @@ export const starListReducer = (state = { star: {} }, action) => {
 
 export const unStarListReducer = (state = { star: {} }, action) => {
   switch (action.type) {
-    case STAR_LIST_REQUEST:
+    case UNSTAR_LIST_REQUEST:
       return { loading: true };
-    case STAR_LIST_SUCCESS:
+    case UNSTAR_LIST_SUCCESS:
       return { loading: false, success: true };
-    case STAR_LIST_FAIL:
+    case UNSTAR_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

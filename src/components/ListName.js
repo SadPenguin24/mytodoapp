@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/listName.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -25,14 +26,26 @@ function ListName({ _id, listName, star }) {
 
   return (
     <div>
-      <h3>
-        <Link to={`/lists/${_id}`}>{listName}</Link>
-        <br />
-        <button onClick={star ? unStarListHandler : starListHandler}>
-          {star ? "yes" : "no"}
-        </button>
-        <button onClick={deleteListHandler}>Delete</button>
-      </h3>
+      <span className="listName">
+        <Link
+          className="name"
+          to={`/lists/${_id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <span>{listName}</span>
+        </Link>
+
+        <div className="space" />
+
+        <div className="icon">
+          <i onClick={star ? unStarListHandler : starListHandler}>
+            {star ? <i class="fas fa-star"></i> : <i class="far fa-star"></i>}
+          </i>
+          <i onClick={deleteListHandler}>
+            <i class="fas fa-trash"></i>
+          </i>
+        </div>
+      </span>
     </div>
   );
 }
