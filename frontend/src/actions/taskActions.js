@@ -33,6 +33,7 @@ export const addTask = (id, itemName) => async (dispatch) => {
     dispatch({ type: ADD_TASK_REQUEST });
 
     const { data } = await axios.post(`/lists/${id}/tasks/add`, { itemName });
+
     dispatch({
       type: ADD_TASK_SUCCESS,
       payload: {

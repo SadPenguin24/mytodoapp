@@ -71,6 +71,7 @@ export const addList = (listName) => async (dispatch) => {
         listName: data.listName,
       },
     });
+    dispatch(lists());
   } catch (error) {
     dispatch({
       type: ADD_LIST_FAIL,
@@ -88,6 +89,7 @@ export const deleteList = (id) => async (dispatch) => {
 
     await axios.delete(`/lists/${id}/delete`);
     dispatch({ type: DELETE_LIST_SUCCESS });
+    dispatch(lists());
   } catch (error) {
     dispatch({
       type: DELETE_LIST_FAIL,
@@ -105,6 +107,7 @@ export const starList = (id) => async (dispatch) => {
 
     const { data } = await axios.put(`/lists/${id}/star`);
     dispatch({ type: STAR_LIST_SUCCESS, payload: data });
+    dispatch(lists());
   } catch (error) {
     dispatch({
       type: STAR_LIST_FAIL,
@@ -122,6 +125,7 @@ export const unStarList = (id) => async (dispatch) => {
 
     const { data } = await axios.put(`/lists/${id}/unstar`);
     dispatch({ type: UNSTAR_LIST_SUCCESS, payload: data });
+    dispatch(lists());
   } catch (error) {
     dispatch({
       type: UNSTAR_LIST_FAIL,
